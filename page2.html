@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
- <title>Чат в стиле 90-х</title>
+ <title>Чат</title>
  <style>
  body {
  background: #FFFFFF url('pattern.gif') repeat;
@@ -10,37 +10,57 @@
  margin: 20px;
  }
  
- .chat-box {
+.chat {
  width: 80%;
  border: 2px solid #00FF00;
- padding: 10px;
+ padding: 15px;
  }
  
- .chat-messages {
- height: 300px;
- overflow-y: auto;
+.messages {
  border: 1px solid #00FF00;
  padding: 10px;
+ margin-bottom: 10px;
+ }
+ 
+.user-name {
+ color: red;
+ font-weight: bold;
  }
  
  input, textarea {
- background: #FFFFFF;
+ background: white;
  border: 1px solid #00FF00;
- }
- 
- .user-name {
- color: #FF0000;
- font-weight: bold;
  }
  </style>
 </head>
 <body>
- <h1>Добро пожаловать в чат!</h1>
+ <h1>Чат</h1>
  
- <div class="chat-box">
-     <div class="chat-messages">
-         <!-- Здесь будут отображаться сообщения -->
-     </div>
-     
-     <form>
-         <input type="text" id="nickname" placeholder="Ваш никнейм" style="width:
+ <div class="chat">
+ <div class="messages" id="messages"></div>
+ 
+ <form>
+ <input type="text" id="nickname" placeholder="Ваш никнейм" style="width: 20%;">
+ <br><br>
+ <textarea id="message" placeholder="Напишите сообщение" rows="3" cols="80%"></textarea>
+ <br>
+ <input type="button" value="Отправить" onclick="sendMessage()" style="background: #00FF00; color: black;">
+ </form>
+ </div>
+ 
+ <p><i>Примечание: сообщения отображаются по порядку</i></p>
+
+ <script>
+ function sendMessage() {
+ const nickname = document.getElementById('nickname').value;
+ const msg = document.getElementById('message').value;
+ const messagesDiv = document.getElementById('messages');
+ 
+ if (nickname && msg) {
+ messagesDiv.innerHTML += <div class="user-name">${nickname}:</div><div>${msg}</div><br>;
+ document.getElementById('message').value = ''; // Очищаем поле
+ }
+ }
+ </script>
+</body>
+</html>
