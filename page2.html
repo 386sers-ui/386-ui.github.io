@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Вторая страница</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-color: white; /* Белый фон */
-            display: flex;
-            align-items:
-            color: #000000; /* Черный текст */
-        }
-    </style>
+ <title>Чат в стиле 90-х</title>
+ <style>
+ body {
+ background: #FFFFFF url('pattern.gif') repeat;
+ color: #0000FF;
+ font-family: 'Comic Sans MS', cursive;
+ margin: 20px;
+ }
+ 
+ .chat-box {
+ width: 80%;
+ border: 2px solid #00FF00;
+ padding: 10px;
+ }
+ 
+ .chat-messages {
+ height: 300px;
+ overflow-y: auto;
+ border: 1px solid #00FF00;
+ padding: 10px;
+ }
+ 
+ input, textarea {
+ background: #FFFFFF;
+ border: 1px solid #00FF00;
+ }
+ 
+ .user-name {
+ color: #FF0000;
+ font-weight: bold;
+ }
+ </style>
 </head>
 <body>
-    <div>
-        Вы попали на вторую страницу
-        Чуть позже здесь появится контент
-    </div>
-</body>
-</html>
+ <h1>Добро пожаловать в чат!</h1>
+ 
+ <div class="chat-box">
+     <div class="chat-messages">
+         <!-- Здесь будут отображаться сообщения -->
+     </div>
+     
+     <form>
+         <input type="text" id="nickname" placeholder="Ваш никнейм" style="width:
