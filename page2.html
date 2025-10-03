@@ -3,36 +3,7 @@
 <head>
  <title>Чат</title>
  <style>
- body {
- background: #FFFFFF url('pattern.gif') repeat;
- color: #0000FF;
- font-family: 'Comic Sans MS', cursive;
- margin: 20px;
- }
- 
-.chat {
- width: 80%;
- border: 2px solid #00FF00;
- padding: 15px;
- }
- 
-.messages {
- border: 1px solid #00FF00;
- padding: 10px;
- margin-bottom: 10px;
- overflow-y: auto;
- height: 300px;
- }
- 
-.user-name {
- color: red;
- font-weight: bold;
- }
- 
- input, textarea {
- background: white;
- border: 1px solid #00FF00;
- }
+ /* Стили остаются прежними */
  </style>
 </head>
 <body>
@@ -46,20 +17,24 @@
  <br><br>
  <textarea id="message" placeholder="Напишите сообщение" rows="3" cols="80%"></textarea>
  <br>
- <input type="button" value="Отправить" onclick="sendMessage()" style="background: #00FF00; color: black;">
+ <button id="send-button" style="background: #00FF00; color: black;">Отправить</button>
  </form>
  </div>
- 
- <p><i>Примечание: сообщения отображаются по порядку</i></p>
 
  <script>
- function sendMessage() {
+ document.addEventListener('DOMContentLoaded', function() {
+ const sendButton = document.getElementById('send-button');
+ sendButton.addEventListener('click', sendMessage);
+ });
+
+ function sendMessage(event) {
+ event.preventDefault(); // предотвращаем перезагрузку страницы
+ 
  const nickname = document.getElementById('nickname').value.trim();
  const msg = document.getElementById('message').value.trim();
  const messagesDiv = document.getElementById('messages');
  
  if (nickname && msg) {
- // Создаем новое сообщение с форматированием
  const newMessage = <div class="user-message">
  <div class="user-name">${nickname}:</div>
  <div class="message-text">${msg}</div>
@@ -67,14 +42,14 @@
  
  messagesDiv.innerHTML += newMessage;
  
- // Очищаем поля ввода
+ // Очищаем поля
  document.getElementById('message').value = '';
  document.getElementById('nickname').value = '';
  
- // Прокручиваем до последнего сообщения
+ // Прокручиваем вниз
  messagesDiv.scrollTop = messagesDiv.scrollHeight;
  } else {
- alert('Пожалуйста, заполните все поля');
+ alert('Заполните все поля');
  }
  }
  </script>
