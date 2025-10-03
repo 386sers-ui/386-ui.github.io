@@ -1,52 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <title>Чат</title>
+    <title>Просмотр видео</title>
     <style>
-        /* Стили остаются прежними */
+        body {
+            background: #FFFFFF;
+            color: #000000;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        .video-container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Чат</h1>
+    <h1>Просмотр видео</h1>
     
-    <div class="chat">
-        <div class="messages" id="messages"></div>
-        
-        <form>
-            <input type="text" id="nickname" placeholder="Ваш никнейм" style="width: 20%;">
-            <br><br>
-            <textarea id="message" placeholder="Напишите сообщение" rows="3" cols="80%"></textarea>
-            <br>
-            <button id="send-button" style="background: #00FF00; color: black;">Отправить</button>
-        </form>
+    <div class="video-container">
+        <!-- Вставьте сюда вашу ссылку из Google Photos -->
+        <iframe src="https://photos.app.goo.gl/3TBd6ZZeLdoLyzmL9" width="100%" height="480" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sendButton = document.getElementById('send-button');
-            sendButton.addEventListener('click', sendMessage);
-        });
-
-        function sendMessage(event) {
-            event.preventDefault(); // Блокируем обновление страницы
-            
-            const nickname = document.getElementById('nickname').value.trim();
-            const msg = document.getElementById('message').value.trim();
-            const messagesDiv = document.getElementById('messages');
-            
-            if (nickname && msg) {
-                const newMessage = 
-                    <div class="user-message">
-                        <div class="user-name">${nickname}:</div>
-                        <div class="message-text">${msg}</div>
-                    </div>
-                ;
-                
-                messagesDiv.innerHTML += newMessage;
-                
-                // Очищаем поля
-                document.getElementById('message').value = '';
-                document.getElementById('nickname').value = '';
-                
-                // Прокручиваем вниз
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+</body>
+</html>
