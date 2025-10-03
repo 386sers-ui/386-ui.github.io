@@ -20,6 +20,8 @@
  border: 1px solid #00FF00;
  padding: 10px;
  margin-bottom: 10px;
+ overflow-y: auto;
+ height: 300px;
  }
  
 .user-name {
@@ -52,15 +54,18 @@
 
  <script>
  function sendMessage() {
- const nickname = document.getElementById('nickname').value;
- const msg = document.getElementById('message').value;
+ const nickname = document.getElementById('nickname').value.trim();
+ const msg = document.getElementById('message').value.trim();
  const messagesDiv = document.getElementById('messages');
  
  if (nickname && msg) {
- messagesDiv.innerHTML += <div class="user-name">${nickname}:</div><div>${msg}</div><br>;
- document.getElementById('message').value = ''; // Очищаем поле
- }
- }
- </script>
-</body>
-</html>
+ // Создаем новый блок для сообщения
+ const messageBlock = document.createElement('div');
+ messageBlock.innerHTML = <div class="user-name">${nickname}:</div><div>${msg}</div>;
+ messagesDiv.appendChild(messageBlock);
+ 
+ // Очищаем поля
+ document.getElementById('message').value = '';
+ document.getElementById('nickname').value = '';
+ 
+ // Прокручиваем
